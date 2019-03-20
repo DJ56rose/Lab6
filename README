@@ -1,1 +1,2 @@
-This is the first readme file
+serverudp and clientudp are the UDP implementations
+else server and client are TCP implementation
