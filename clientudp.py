@@ -1,8 +1,8 @@
 import socket, sys, datetime
 
-if (len(sys.argv) != 6):
-	print("ERROR: wrong number of arguments")
-	exit()
+if (len(sys.argv) != 6): 
+    print("ERROR: wrong number of arguments")
+    exit()
 server_name = sys.argv[1]
 port = sys.argv[2]
 ex_cnt = sys.argv[3]
@@ -18,19 +18,19 @@ addr = (IP,port)
 # create str & send
 cmdstr = ex_cnt+'@'+delay+'@'+command
 blah = cmdstr.split('@')
-cmdstr = bytearray(cmdstr,'utf-8')
+cmdstr = bytes(cmdstr,'utf-8')
 s.sendto(cmdstr,addr)
 
 # receive
 while True:
-	msg,addr = s.recvfrom(1024)
-	msg = str(msg)
-	if msg[0] == '@':
-		print("Breaking off...")
-		break
-	print(msg)
+    msg,addr = s.recvfrom(1024)
+    msg = msg.decode('utf-8')
+    if msg[0] == '@':   # rx done msg
+        break
+    print(msg)
 
 # print time & terminate
 timp = datetime.datetime.now()
-finish = 'Finished: '+str(timp)
+finish = bytes('Finished: '+str(timp),'utf-8')
 s.sendto(finish,addr)
+

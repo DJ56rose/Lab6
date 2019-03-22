@@ -1,3 +1,4 @@
 server prints time, IP, cmd, status after every execution?
 when client terminates, prints all results at server or client?
 need to encode?
+server print src IP as hostname or IP addr?
