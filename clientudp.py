@@ -10,6 +10,15 @@ ex_cnt = sys.argv[3]
 delay = sys.argv[4]
 command = sys.argv[5]
 
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+# init socket
+s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 IP = socket.gethostbyname(server_name)
+port = int(port)
+addr = (IP,port)
 
+# create str & send
+cmdstr = ex_cnt+'@'+delay+'@'+command
+blah = cmdstr.split('@')
+print(blah)
+cmdstr = bytearray(cmdstr,'utf-8')
+s.sendto(cmdstr,addr)
