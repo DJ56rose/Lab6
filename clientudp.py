@@ -1,5 +1,4 @@
-# client program
-import socket, sys
+import socket, sys, datetime
 
 if (len(sys.argv) != 6):
 	print("ERROR: wrong number of arguments")
@@ -19,6 +18,19 @@ addr = (IP,port)
 # create str & send
 cmdstr = ex_cnt+'@'+delay+'@'+command
 blah = cmdstr.split('@')
-print(blah)
 cmdstr = bytearray(cmdstr,'utf-8')
 s.sendto(cmdstr,addr)
+
+# receive
+while True:
+	msg,addr = s.recvfrom(1024)
+	msg = str(msg)
+	if msg[0] == '@':
+		print("Breaking off...")
+		break
+	print(msg)
+
+# print time & terminate
+timp = datetime.datetime.now()
+finish = 'Finished: '+str(timp)
+s.sendto(finish,addr)
