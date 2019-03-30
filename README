@@ -1,2 +1,6 @@
-serverudp and clientudp are the UDP implementations
-else server and client are TCP implementation
+serverudp.py and clientudp.py are UDP implementations
+rcmdd.py and rcmd.py are TCP implementations
+
+Run server and client with python3. Run server first, then client
+Only input one-input commands (i.e. do not put something like 'ls -l')
+Temporary file gets written into server, not client, which only outputs the result.
