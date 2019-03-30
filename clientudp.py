@@ -31,6 +31,6 @@ while True:
 
 # print time & terminate
 timp = datetime.datetime.now()
-finish = bytes('Finished: '+str(timp),'utf-8')
+finish = bytes(str(datetime.datetime.now()),'utf-8')
 s.sendto(finish,addr)
 
